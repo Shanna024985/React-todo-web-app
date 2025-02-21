@@ -1,7 +1,7 @@
 import { NavBar }  from './components/navBar'
 import './App.css'
-import { useState } from 'react'
 import { DivForDisplayingUsers } from './components/divForDisplayingUsers'
+import { ButtonThatChangesNumber } from './components/ButtonThatChangesNumber'
 
 function App() {
   let array = ["User1", "User2", "User3", "User4", "User5"]
@@ -13,6 +13,7 @@ function App() {
           return <DivForDisplayingUsers data={value} index={index}/>
         })}
       </div>
+      <ButtonThatChangesNumber></ButtonThatChangesNumber>
     </>
   )
 }
