@@ -5,10 +5,11 @@ import { NavBar }  from './components/navBar'
 import './App.css'
 
 function App() {
-
+  let array = ["User1", "User2", "User3"]
   return (
     <>
       <NavBar></NavBar>
+
     </>
   )
 }
