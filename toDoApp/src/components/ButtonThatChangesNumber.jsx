@@ -9,7 +9,7 @@ export const ButtonThatChangesNumber = () => {
     }
     return (
     <div>
-        <button onClick={changeNumber}>Click me</button>
+        <button onClick={changeNumber} className="hover:cursor-pointer">Click me</button>
         <p ref={paragraphRef}>{number}</p>
     </div>
   )
