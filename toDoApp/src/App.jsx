@@ -3,27 +3,28 @@ import { DivForDisplayingUsers } from './components/divForDisplayingUsers'
 import { ButtonThatChangesNumber } from './components/ButtonThatChangesNumber'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { ColorComponent } from './components/ColorComponent';
+import { Route, Routes } from 'react-router-dom';
+import { Elective } from './components/Elective';
 
 export const colourContext = createContext();
-
-function App() {
-  let [colorValue,setColorValue] = useState(0,0,0)
+function Home() {
+  let [colorValue, setColorValue] = useState(0, 0, 0)
   return (
     <>
-      <NavBar></NavBar>
-      <InputField></InputField>
-      <div className='ml-4'>
-        <ButtonThatChangesNumber></ButtonThatChangesNumber>
+      <div>
+        <InputField></InputField>
+        <div className='ml-4'>
+          <ButtonThatChangesNumber></ButtonThatChangesNumber>
+        </div>
+        <input type="color" value={colorValue} className='ml-3 rounded-4xl border-amber-50 border-r-2' onChange={e => setColorValue(e.target.value)} />
+        <colourContext.Provider value={colorValue}>
+          <ColorComponent />
+        </colourContext.Provider>
       </div>
-      <input type="color" value={colorValue} className='ml-3 rounded-4xl border-amber-50 border-r-2' onChange={e => setColorValue(e.target.value)}/>
-      <colourContext.Provider value={colorValue}>
-        <ColorComponent />
-      </colourContext.Provider>
+
     </>
   )
 }
-
-export default App
 
 function InputField() {
   let inputReference = useRef(null)
@@ -52,3 +53,20 @@ function DisplayData(data) {
     </div>
   )
 }
+
+function App() {
+  return (
+    <>
+      <NavBar></NavBar>
+      <div className='ml-4'>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/elective' element={<Elective/>}/>
+        </Routes>
+      </div>
+    </>
+  )
+}
+
+export default App
+
