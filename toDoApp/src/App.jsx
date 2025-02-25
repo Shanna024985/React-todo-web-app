@@ -2,8 +2,12 @@ import { NavBar } from './components/navBar'
 import { DivForDisplayingUsers } from './components/divForDisplayingUsers'
 import { ButtonThatChangesNumber } from './components/ButtonThatChangesNumber'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { ColorComponent } from './components/ColorComponent';
+
+export const colourContext = createContext();
 
 function App() {
+  let [colorValue,setColorValue] = useState(0,0,0)
   return (
     <>
       <NavBar></NavBar>
@@ -11,6 +15,10 @@ function App() {
       <div className='ml-4'>
         <ButtonThatChangesNumber></ButtonThatChangesNumber>
       </div>
+      <input type="color" value={colorValue} className='ml-3 rounded-4xl border-amber-50 border-r-2' onChange={e => setColorValue(e.target.value)}/>
+      <colourContext.Provider value={colorValue}>
+        <ColorComponent />
+      </colourContext.Provider>
     </>
   )
 }
